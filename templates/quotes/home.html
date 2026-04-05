@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="p-5 mb-4 bg-light rounded-3">
+    <h1 class="display-5">Welcome to Quote Board</h1>
+    <p class="lead">A simple Django app for viewing and sharing quotes.</p>
+
+    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#welcomeModal">
+        Open Welcome Modal
+    </button>
+</div>
+
+<div class="row">
+    {% for quote in latest_quotes %}
+    <div class="col-md-4">
+        <div class="card mb-3">
+            <div class="card-body">
+                <p>"{{ quote.text }}"</p>
+                <small>- {{ quote.author }}</small>
+            </div>
+        </div>
+    </div>
+    {% empty %}
+    <p>No quotes yet.</p>
+    {% endfor %}
+</div>
+
+<div class="modal fade" id="welcomeModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Welcome</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                This project uses Django, Bootstrap, authentication, forms, templates, models, and admin.
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

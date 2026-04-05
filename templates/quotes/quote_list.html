@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>All Quotes</h1>
+
+{% for quote in quotes %}
+<div class="card mb-3">
+    <div class="card-body">
+        <p class="mb-1">"{{ quote.text }}"</p>
+        <p class="mb-1"><strong>{{ quote.author }}</strong></p>
+        <small>Category: {{ quote.category.name }}</small>
+    </div>
+</div>
+{% empty %}
+<p>No quotes available.</p>
+{% endfor %}
+{% endblock %}
